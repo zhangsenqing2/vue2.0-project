@@ -24,26 +24,48 @@
           </li>
         </ul>
       </nav>
+      <h1 style="">{{count}}</h1>
     </div>
   </header>
 </template>
 
 <script>
+  //按需加载vuex的两个方法
+  import  {mapGetters,mapActions} from 'vuex'
+  console.log(mapGetters);
+
     export default {
+      //mapGetters 辅助函数仅仅是将 store 中的 getter 映射到局部计算属性：
+      computed:mapGetters([
+        'count'
+      ]),
+      //mapActions 辅助函数将组件的 methods 映射为 store.dispatch 调用（需要先在根节点注入 store）：
+      // methods:mapActions([
+      // 'goIndex',
+      // 'goInformation'
+      // ])
       methods:{
-        goInformation(){
-          console.log("旅游资讯");
-          //跳到对应的界面，可以代替router-link的to属性实现功能
-          this.$router.push({path:'/information'});
-          console.log(document.querySelectorAll(".hea_nav li"));
-          document.querySelector(".active").classList.remove("active");
-          document.querySelector(".infor").classList.add("active");
-        },
-        goIndex(){
+        //...(对象展开运算符),可以合并
+        ...mapActions([
+          'goIndex',
+          'goInformation'
+        ]),
+        aa(){}
+      },
+      //生命周期函数，组件更新完毕
+      updated(){
+        console.log('组件更新完毕');
+        if(this.count ==1 ){
           console.log("首页");
-          this.$router.push({path:'/index'});
+          this.$router.push({path:'/index'});//跳到对应的界面，可以代替router-link的to属性实现功能
           document.querySelector(".active").classList.remove("active");
           document.querySelector(".index").classList.add("active");
+        }
+        if(this.count==2){
+          console.log("旅游资讯");
+          this.$router.push({path:'/information'});
+          document.querySelector(".active").classList.remove("active");
+          document.querySelector(".infor").classList.add("active");
         }
       }
     }

@@ -4,16 +4,17 @@
     <Loading></Loading>
 
     <headerView></headerView>
+    <!--<h1>{{count}}</h1>-->
     <router-view/>
     <footerView></footerView>
   </div>
 </template>
 
 <script>
+
 import headerView from './components/Header'
 import footerView from './components/Footer'
 
-console.log(headerView);
 export default {
   name: 'App',
   components:{

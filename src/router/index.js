@@ -5,8 +5,6 @@ import IndexView from '../components/index/content.vue'
 import InformationView from '../components/Information/content.vue'
 
 // import Ticket from '../components/ticket/content'
-// import Scenery from '../components/scenery/content'
-// import About from '../components/about/content'
 
 Vue.use(Router);
 console.log(IndexView);
@@ -26,16 +24,6 @@ export default new Router({
     //   path: '/ticket',
     //   name: 'Ticket',
     //   component: Ticket
-    // },
-    // {
-    //   path: '/scenery',
-    //   name: 'Scenery',
-    //   component: Scenery
-    // },
-    // {
-    //   path: '/about',
-    //   name: 'About',
-    //   component: About
     // },
     {
       path:'*', redirect:'/index'
